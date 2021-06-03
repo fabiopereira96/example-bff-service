@@ -1,0 +1,47 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.bff.example",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "6.10.5",
+    "applicationType": "monolith",
+    "baseName": "bff",
+    "packageName": "com.bff.example",
+    "packageFolder": "com/bff/example",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "caffeine",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "mongodb",
+    "devDatabaseType": "mongodb",
+    "prodDatabaseType": "mongodb",
+    "messageBroker": false,
+    "buildTool": "maven",
+    "jwtSecretKey": "MGY5ZTQ0YzNhYzAyMjM5MzQ3ZDA3YWRjM2VjYjQxY2Q2Y2Y5NWMxYTA5YWUwMTczOWUxNWQyNTE5ZjY1MDc3YWM5ZWQwNzUyNGI4ZjFlYTczOWQwMWE5MzQ5ZjNhNDBhZjRjNDlmYTU2OWY2M2I3MGU0MzQwYjVmZjEyN2RmZTk=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "skipClient": true,
+    "creationTimestamp": 1622757821477,
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-quarkus",
+        "version": "1.1.1"
+      }
+    ],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": ["en"],
+    "blueprints": [
+      {
+        "name": "generator-jhipster-quarkus",
+        "version": "1.1.1"
+      }
+    ]
+  }
+}
