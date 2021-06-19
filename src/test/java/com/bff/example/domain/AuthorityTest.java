@@ -2,8 +2,8 @@ package com.bff.example.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.bff.example.security.AuthoritiesConstants;
-import io.quarkus.test.junit.QuarkusTest;
+import com.bff.example.constants.AuthoritiesConstants;
+import com.bff.example.infrastructure.dataprovider.authority.Authority;
 import org.junit.jupiter.api.Test;
 
 public class AuthorityTest {

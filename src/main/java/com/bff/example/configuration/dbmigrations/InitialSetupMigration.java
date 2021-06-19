@@ -1,0 +1,90 @@
+package com.bff.example.configuration.dbmigrations;
+
+import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
+import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
+
+import com.bff.example.infrastructure.dataprovider.user.UserEntity;
+import com.github.cloudyrock.mongock.ChangeLog;
+import com.github.cloudyrock.mongock.ChangeSet;
+import com.mongodb.MongoClientSettings;
+import com.mongodb.client.MongoDatabase;
+import com.bff.example.constants.AuthoritiesConstants;
+import com.bff.example.infrastructure.dataprovider.authority.Authority;
+import java.time.Instant;
+import java.util.Arrays;
+
+import org.bson.codecs.configuration.CodecProvider;
+import org.bson.codecs.configuration.CodecRegistry;
+import org.bson.codecs.pojo.PojoCodecProvider;
+
+/**
+ * Creates the initial database setup.
+ */
+@ChangeLog(order = "001")
+public class InitialSetupMigration {
+
+  @ChangeSet(order = "01", author = "initiator", id = "01-addAuthorities")
+  public void addAuthorities(MongoDatabase db) {
+    Authority adminAuthority = new Authority(AuthoritiesConstants.ADMIN);
+    Authority userAuthority = new Authority(AuthoritiesConstants.USER);
+
+    db.createCollection("jhi_authority");
+    db
+      .getCollection("jhi_authority", Authority.class)
+      .withCodecRegistry(getCodecRegistry())
+      .insertMany(Arrays.asList(adminAuthority, userAuthority));
+  }
+
+  @ChangeSet(order = "02", author = "initiator", id = "02-addUsers")
+  public void addUsers(MongoDatabase db) {
+    Authority adminAuthority = new Authority(AuthoritiesConstants.ADMIN);
+    Authority userAuthority = new Authority(AuthoritiesConstants.USER);
+
+    UserEntity anonymousUserEntity = new UserEntity();
+    anonymousUserEntity.id = "user-1";
+    anonymousUserEntity.login = "anonymoususer";
+    anonymousUserEntity.password = "$2a$10$j8S5d7Sr7.8VTOYNviDPOeWX8KcYILUVJBsYV83Y5NtECayypx9lO";
+    anonymousUserEntity.firstName = "Anonymous";
+    anonymousUserEntity.lastName = "UserEntity";
+    anonymousUserEntity.email = "anonymous@localhost";
+    anonymousUserEntity.activated = true;
+    anonymousUserEntity.langKey = "en";
+    anonymousUserEntity.createdDate = Instant.now();
+
+    UserEntity adminUserEntity = new UserEntity();
+    adminUserEntity.id = "user-2";
+    adminUserEntity.login = "admin";
+    adminUserEntity.password = "$2a$10$gSAhZrxMllrbgj/kkK9UceBPpChGWJA7SYIb1Mqo.n5aNLq1/oRrC";
+    adminUserEntity.firstName = "admin";
+    adminUserEntity.lastName = "Administrator";
+    adminUserEntity.email = "admin@localhost";
+    adminUserEntity.activated = true;
+    adminUserEntity.langKey = "en";
+    adminUserEntity.createdDate = Instant.now();
+    adminUserEntity.authorities.add(adminAuthority);
+    adminUserEntity.authorities.add(userAuthority);
+
+    UserEntity userUserEntity = new UserEntity();
+    userUserEntity.id = "user-3";
+    userUserEntity.login = "user";
+    userUserEntity.password = "$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K";
+    userUserEntity.firstName = "";
+    userUserEntity.lastName = "UserEntity";
+    userUserEntity.email = "user@localhost";
+    userUserEntity.activated = true;
+    userUserEntity.langKey = "en";
+    userUserEntity.createdDate = Instant.now();
+    userUserEntity.authorities.add(userAuthority);
+
+    db.createCollection("jhi_user");
+    db
+      .getCollection("jhi_user", UserEntity.class)
+      .withCodecRegistry(getCodecRegistry())
+      .insertMany(Arrays.asList(adminUserEntity, anonymousUserEntity, userUserEntity));
+  }
+
+  private CodecRegistry getCodecRegistry() {
+    CodecProvider pojoCodecProvider = PojoCodecProvider.builder().automatic(true).build();
+    return fromRegistries(MongoClientSettings.getDefaultCodecRegistry(), fromProviders(pojoCodecProvider));
+  }
+}

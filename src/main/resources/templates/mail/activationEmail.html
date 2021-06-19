@@ -1,4 +1,4 @@
-{@com.bff.example.domain.User user}
+{@com.bff.example.infrastructure.dataprovider.user.UserEntity userEntity}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,13 +8,13 @@
 </head>
 <body>
 <p>
-    Dear {user.login}
+    Dear {userEntity.login}
 </p>
 <p>
     Your JHipster account has been created, please click on the URL below to activate it:
 </p>
 <p>
-    <a href="{baseUrl}/account/activate?key={user.activationKey}">Login Link</a>
+    <a href="{baseUrl}/account/activate?key={userEntity.activationKey}">Login Link</a>
 </p>
 <p>
     <span>Regards, </span>

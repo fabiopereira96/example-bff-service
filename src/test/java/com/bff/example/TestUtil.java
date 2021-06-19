@@ -1,12 +1,12 @@
 package com.bff.example;
 
-import static com.bff.example.config.Constants.DATE_TIME_FORMAT;
+import static com.bff.example.configuration.Constants.DATE_TIME_FORMAT;
 import static io.restassured.RestAssured.given;
 import static javax.ws.rs.core.Response.Status.OK;
 import static org.hamcrest.Matchers.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.bff.example.web.rest.vm.LoginVM;
+import com.bff.example.controller.rest.vm.LoginVM;
 import io.restassured.mapper.ObjectMapper;
 import io.restassured.mapper.ObjectMapperDeserializationContext;
 import io.restassured.mapper.ObjectMapperSerializationContext;

@@ -1,6 +1,7 @@
 package com.bff.example.service;
 
-import com.bff.example.domain.User;
+import com.bff.example.domain.mail.MailService;
+import com.bff.example.infrastructure.dataprovider.user.UserEntity;
 import io.quarkus.mailer.Mail;
 import io.quarkus.mailer.MockMailbox;
 import io.quarkus.test.junit.QuarkusTest;
@@ -33,22 +34,22 @@ public class MailServiceIT {
         mailbox.clear();
     }
 
-    User user() {
-        User user = new User();
-        user.login = "john";
-        user.email = "john.doe@example.com";
-        user.langKey = "en";
+    UserEntity user() {
+        UserEntity userEntity = new UserEntity();
+        userEntity.login = "john";
+        userEntity.email = "john.doe@example.com";
+        userEntity.langKey = "en";
 
-        return user;
+        return userEntity;
     }
 
     @Test
     void should_containsActivationInfosWhenCallSendActivationEmail() {
-        User user = user();
+        UserEntity userEntity = user();
 
-        mailService.sendActivationEmail(user);
+        mailService.sendActivationEmail(userEntity);
 
-        List<Mail> sent = mailbox.getMessagesSentTo(user.email);
+        List<Mail> sent = mailbox.getMessagesSentTo(userEntity.email);
         assertThat(sent).hasSize(1);
         Mail actual = sent.get(0);
         assertThat(actual.getHtml()).contains("Your JHipster account has been created, please click on the URL below to activate it:");
@@ -57,11 +58,11 @@ public class MailServiceIT {
 
     @Test
     void should_containsActivationInfosWhenCallSendCreationEmail() {
-        User user = user();
+        UserEntity userEntity = user();
 
-        mailService.sendCreationEmail(user);
+        mailService.sendCreationEmail(userEntity);
 
-        List<Mail> sent = mailbox.getMessagesSentTo(user.email);
+        List<Mail> sent = mailbox.getMessagesSentTo(userEntity.email);
         assertThat(sent).hasSize(1);
         Mail actual = sent.get(0);
         assertThat(actual.getHtml()).contains("Your JHipster account has been created, please click on the URL below to access it:");
@@ -70,11 +71,11 @@ public class MailServiceIT {
 
     @Test
     void should_containsResetInfosWhenCallSendPasswordResetMail() {
-        User user = user();
+        UserEntity userEntity = user();
 
-        mailService.sendPasswordResetMail(user);
+        mailService.sendPasswordResetMail(userEntity);
 
-        List<Mail> sent = mailbox.getMessagesSentTo(user.email);
+        List<Mail> sent = mailbox.getMessagesSentTo(userEntity.email);
         assertThat(sent).hasSize(1);
         Mail actual = sent.get(0);
         assertThat(actual.getHtml()).contains("For your JHipster account a password reset was requested, please click on the URL below to reset it:");

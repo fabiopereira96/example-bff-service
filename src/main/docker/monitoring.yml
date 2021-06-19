@@ -5,7 +5,7 @@ services:
     volumes:
       - ./prometheus/:/etc/prometheus/
     command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--configuration.file=/etc/prometheus/prometheus.yml'
     ports:
       - 9090:9090
     # On MacOS, remove next line and replace localhost by host.docker.internal in prometheus/prometheus.yml and
