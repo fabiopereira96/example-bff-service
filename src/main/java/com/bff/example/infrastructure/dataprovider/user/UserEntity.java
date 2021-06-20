@@ -20,9 +20,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-/**
- * A user.
- */
 @MongoEntity(collection="jhi_user")
 public class UserEntity extends PanacheMongoEntityBase implements Serializable {
     private static final long serialVersionUID = 1L;
