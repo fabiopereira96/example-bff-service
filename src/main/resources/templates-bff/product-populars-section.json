@@ -1,0 +1,7 @@
+{
+  "type": "SECTION",
+  "key": "PRODUCT_POPULARS",
+  "dynamic": true,
+  "metadata": "{\"title\":\"<html><strong>Popular</strong> </html>\",\"popularsProperties\":{\"tag\":{\"description\":\"<html> {{name}} </html>\",\"icon\":\"https://links.images/crown\"},\"name\":\"<html> {{name}} </html>\",\"description\":\"<html> {{description}} </html>\",\"rating\":\"{{rating}}\",\"image\":\"https://links.images/products/{{id}}\",\"isSelected\":false,\"buttonWithUrl\":{\"title\":\"<html> Add to cart</html>\",\"url\":\"https://host/api/cart/products/{{id}}\"}}}",
+  "status": "ACTIVE"
+}

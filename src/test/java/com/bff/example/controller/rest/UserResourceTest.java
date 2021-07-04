@@ -10,8 +10,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.*;
 
 import com.bff.example.TestUtil;
-import com.bff.example.infrastructure.dataprovider.authority.Authority;
-import com.bff.example.infrastructure.dataprovider.user.UserEntity;
+import com.bff.example.infrastructure.mongo.authority.Authority;
+import com.bff.example.infrastructure.mongo.user.UserEntity;
 import com.bff.example.constants.AuthoritiesConstants;
 import com.bff.example.domain.user.model.User;
 import com.bff.example.domain.user.mapper.UserMapper;

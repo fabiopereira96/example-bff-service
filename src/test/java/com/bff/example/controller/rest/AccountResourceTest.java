@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import com.bff.example.TestUtil;
 import com.bff.example.configuration.Constants;
-import com.bff.example.infrastructure.dataprovider.user.UserEntity;
+import com.bff.example.infrastructure.mongo.user.UserEntity;
 import com.bff.example.constants.AuthoritiesConstants;
 import com.bff.example.domain.security.RandomUtil;
 import com.bff.example.domain.user.model.PasswordChange;

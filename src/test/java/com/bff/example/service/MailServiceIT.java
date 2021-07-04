@@ -1,7 +1,7 @@
 package com.bff.example.service;
 
 import com.bff.example.domain.mail.MailService;
-import com.bff.example.infrastructure.dataprovider.user.UserEntity;
+import com.bff.example.infrastructure.mongo.user.UserEntity;
 import io.quarkus.mailer.Mail;
 import io.quarkus.mailer.MockMailbox;
 import io.quarkus.test.junit.QuarkusTest;

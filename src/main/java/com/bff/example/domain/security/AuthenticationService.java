@@ -1,6 +1,6 @@
 package com.bff.example.domain.security;
 
-import com.bff.example.infrastructure.dataprovider.user.UserEntity;
+import com.bff.example.infrastructure.mongo.user.UserEntity;
 import com.bff.example.domain.security.exception.UserNotActivatedException;
 import com.bff.example.domain.security.exception.UsernameNotFoundException;
 import io.quarkus.security.AuthenticationFailedException;

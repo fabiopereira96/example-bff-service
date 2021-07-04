@@ -1,19 +1,21 @@
-package com.bff.example.infrastructure.dataprovider.metadata;
+package com.bff.example.infrastructure.mongo.metadata;
 
 import io.quarkus.mongodb.panache.MongoEntity;
 import io.quarkus.mongodb.panache.PanacheMongoEntityBase;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@MongoEntity(collection="page")
-public class PageEntity extends PanacheMongoEntityBase implements Serializable {
+@MongoEntity(collection="bff_section")
+public class SectionEntity extends PanacheMongoEntityBase implements Serializable {
     private static final long serialVersionUID = -6066284992177844651L;
 
     @NotNull
@@ -25,8 +27,6 @@ public class PageEntity extends PanacheMongoEntityBase implements Serializable {
     @NotNull
     public Status status;
 
-    public Set<SectionEntity> sections;
-    public String title;
-    public String so;
-    public String userId;
+    public Boolean dinamic;
+    public String metadata;
 }

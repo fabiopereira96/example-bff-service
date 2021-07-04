@@ -1,0 +1,7 @@
+{
+  "type": "SECTION",
+  "key": "HOME_PAGE_HEAD",
+  "dynamic": true,
+  "metadata": "{\"profilePicture\":\"https:\\/\\/links.images\\/{{customerPicture}},\",\"title\":\"<html> Food <strong>Delivery<\\/strong> <\\/html>,\",\"search\":{\"description\":\"<html> Search <\\/html>\",\"histories\":\"{{#histories}} <h2>{{text}}<\\/h2> {{\\/histories}}\"}}",
+  "status": "ACTIVE"
+}

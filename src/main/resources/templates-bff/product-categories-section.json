@@ -1,0 +1,7 @@
+{
+  "type": "SECTION",
+  "key": "PRODUCT_CATEGORIES",
+  "dynamic": true,
+  "metadata": "{\"title\":\"<html><strong>Categories<\\/strong> <\\/html>\",\"categoriesProperties\":{\"name\":\"<html> {{name}} <\\/html>\",\"icon\":\"https://links.images/{{icon}}\",\"isSelected\":false,\"buttonWithUrl\":{\"title\":\"<html> Details<\\/html>\",\"url\":\"https://host/api/categories/{{id}}\"}}}",
+  "status": "ACTIVE"
+}

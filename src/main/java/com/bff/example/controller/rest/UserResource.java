@@ -3,7 +3,7 @@ package com.bff.example.controller.rest;
 import static javax.ws.rs.core.UriBuilder.fromPath;
 
 import com.bff.example.domain.user.model.User;
-import com.bff.example.infrastructure.dataprovider.user.UserEntity;
+import com.bff.example.infrastructure.mongo.user.UserEntity;
 import com.bff.example.constants.AuthoritiesConstants;
 import com.bff.example.domain.mail.MailService;
 import com.bff.example.domain.user.UserService;

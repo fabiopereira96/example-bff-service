@@ -1,7 +1,7 @@
 package com.bff.example.controller.rest;
 
 import com.bff.example.domain.user.model.User;
-import com.bff.example.infrastructure.dataprovider.user.UserEntity;
+import com.bff.example.infrastructure.mongo.user.UserEntity;
 import com.bff.example.domain.user.exception.InvalidPasswordException;
 import com.bff.example.domain.mail.MailService;
 import com.bff.example.domain.user.UserService;

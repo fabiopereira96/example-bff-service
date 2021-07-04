@@ -2,8 +2,8 @@ package com.bff.example.domain.user;
 
 import com.bff.example.configuration.Constants;
 import com.bff.example.domain.user.model.User;
-import com.bff.example.infrastructure.dataprovider.authority.Authority;
-import com.bff.example.infrastructure.dataprovider.user.UserEntity;
+import com.bff.example.infrastructure.mongo.authority.Authority;
+import com.bff.example.infrastructure.mongo.user.UserEntity;
 import com.bff.example.constants.AuthoritiesConstants;
 import com.bff.example.domain.security.BCryptPasswordHasher;
 import com.bff.example.domain.security.RandomUtil;

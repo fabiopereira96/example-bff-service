@@ -3,7 +3,7 @@ package com.bff.example.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.bff.example.TestUtil;
-import com.bff.example.infrastructure.dataprovider.user.UserEntity;
+import com.bff.example.infrastructure.mongo.user.UserEntity;
 import org.junit.jupiter.api.Test;
 
 public class UserEntityTest {

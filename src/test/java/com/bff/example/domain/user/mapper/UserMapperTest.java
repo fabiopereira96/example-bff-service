@@ -1,7 +1,7 @@
 package com.bff.example.domain.user.mapper;
 
 import com.bff.example.domain.user.model.User;
-import com.bff.example.infrastructure.dataprovider.user.UserEntity;
+import com.bff.example.infrastructure.mongo.user.UserEntity;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

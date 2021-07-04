@@ -1,8 +1,8 @@
 package com.bff.example.domain.user.mapper;
 
 import com.bff.example.domain.user.model.User;
-import com.bff.example.infrastructure.dataprovider.authority.Authority;
-import com.bff.example.infrastructure.dataprovider.user.UserEntity;
+import com.bff.example.infrastructure.mongo.authority.Authority;
+import com.bff.example.infrastructure.mongo.user.UserEntity;
 
 import javax.inject.Singleton;
 import java.util.HashSet;

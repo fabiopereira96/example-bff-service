@@ -2,6 +2,9 @@
   "resources": [
     {
       "pattern": "jwt/privateKey.pem"
+    },
+    {
+      "pattern": "templates-bff/*\\.json$"
     }
   ]
 }

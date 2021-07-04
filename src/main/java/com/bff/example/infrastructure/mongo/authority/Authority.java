@@ -1,4 +1,4 @@
-package com.bff.example.infrastructure.dataprovider.authority;
+package com.bff.example.infrastructure.mongo.authority;
 
 import io.quarkus.mongodb.panache.MongoEntity;
 import io.quarkus.mongodb.panache.PanacheMongoEntityBase;
