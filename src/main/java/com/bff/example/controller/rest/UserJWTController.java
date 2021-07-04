@@ -1,10 +1,13 @@
 package com.bff.example.controller.rest;
 
-import com.bff.example.domain.security.jwt.TokenProvider;
-import com.bff.example.domain.security.AuthenticationService;
 import com.bff.example.controller.rest.vm.LoginVM;
+import com.bff.example.domain.security.AuthenticationService;
+import com.bff.example.domain.security.jwt.TokenProvider;
 import io.quarkus.runtime.annotations.RegisterForReflection;
 import io.quarkus.security.runtime.QuarkusSecurityIdentity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.annotation.security.PermitAll;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -16,8 +19,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Controller to authenticate users.

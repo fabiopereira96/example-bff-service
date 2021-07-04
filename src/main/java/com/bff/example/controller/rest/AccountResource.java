@@ -1,22 +1,21 @@
 package com.bff.example.controller.rest;
 
-import com.bff.example.domain.user.model.User;
-import com.bff.example.infrastructure.mongo.user.UserEntity;
-import com.bff.example.domain.user.exception.InvalidPasswordException;
-import com.bff.example.domain.mail.MailService;
-import com.bff.example.domain.user.UserService;
-import com.bff.example.domain.user.exception.UsernameAlreadyUsedException;
-import com.bff.example.domain.user.model.PasswordChange;
 import com.bff.example.controller.rest.exception.EmailAlreadyUsedException;
 import com.bff.example.controller.rest.exception.EmailNotFoundException;
 import com.bff.example.controller.rest.exception.LoginAlreadyUsedException;
 import com.bff.example.controller.rest.vm.KeyAndPasswordVM;
 import com.bff.example.controller.rest.vm.ManagedUserVM;
-
+import com.bff.example.domain.mail.MailService;
+import com.bff.example.domain.user.UserService;
+import com.bff.example.domain.user.exception.InvalidPasswordException;
+import com.bff.example.domain.user.exception.UsernameAlreadyUsedException;
+import com.bff.example.domain.user.model.PasswordChange;
+import com.bff.example.domain.user.model.User;
+import com.bff.example.infrastructure.mongo.user.UserEntity;
 import io.quarkus.security.Authenticated;
-import java.security.Principal;
-import java.util.Optional;
-import java.util.concurrent.CompletionStage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.annotation.security.PermitAll;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -26,8 +25,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.security.Principal;
+import java.util.Optional;
+import java.util.concurrent.CompletionStage;
 
 /**
  * REST controller for managing the current user's account.

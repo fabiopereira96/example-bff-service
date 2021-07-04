@@ -1,6 +1,7 @@
 package com.bff.example.controller.rest.vm;
 
 import io.quarkus.runtime.annotations.RegisterForReflection;
+
 import java.util.Collection;
 import java.util.Map;
 import java.util.stream.Collectors;

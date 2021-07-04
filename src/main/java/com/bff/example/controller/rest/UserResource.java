@@ -1,19 +1,19 @@
 package com.bff.example.controller.rest;
 
-import static javax.ws.rs.core.UriBuilder.fromPath;
-
-import com.bff.example.domain.user.model.User;
-import com.bff.example.infrastructure.mongo.user.UserEntity;
 import com.bff.example.constants.AuthoritiesConstants;
-import com.bff.example.domain.mail.MailService;
-import com.bff.example.domain.user.UserService;
 import com.bff.example.controller.rest.exception.BadRequestAlertException;
 import com.bff.example.controller.rest.exception.EmailAlreadyUsedException;
 import com.bff.example.controller.rest.exception.LoginAlreadyUsedException;
 import com.bff.example.controller.util.HeaderUtil;
 import com.bff.example.controller.util.ResponseUtil;
-import java.util.List;
-import java.util.Optional;
+import com.bff.example.domain.mail.MailService;
+import com.bff.example.domain.user.UserService;
+import com.bff.example.domain.user.model.User;
+import com.bff.example.infrastructure.mongo.user.UserEntity;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -21,10 +21,10 @@ import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
+import java.util.Optional;
 
-import org.eclipse.microprofile.config.inject.ConfigProperty;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static javax.ws.rs.core.UriBuilder.fromPath;
 
 /**
  * REST controller for managing users.

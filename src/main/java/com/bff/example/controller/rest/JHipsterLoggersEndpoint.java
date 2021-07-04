@@ -2,7 +2,6 @@ package com.bff.example.controller.rest;
 
 import com.bff.example.constants.AuthoritiesConstants;
 import com.bff.example.controller.rest.vm.LoggerVM;
-
 import io.quarkus.runtime.annotations.RegisterForReflection;
 
 import javax.annotation.security.RolesAllowed;

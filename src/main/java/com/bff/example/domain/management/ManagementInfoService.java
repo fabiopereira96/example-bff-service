@@ -1,8 +1,8 @@
 package com.bff.example.domain.management;
 
-import io.quarkus.runtime.configuration.ProfileManager;
 import com.bff.example.configuration.JHipsterInfo;
 import com.bff.example.domain.management.model.ManagementInfo;
+import io.quarkus.runtime.configuration.ProfileManager;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

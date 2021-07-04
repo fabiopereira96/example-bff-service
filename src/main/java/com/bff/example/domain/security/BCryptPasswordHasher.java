@@ -1,10 +1,5 @@
 package com.bff.example.domain.security;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.security.spec.InvalidKeySpecException;
-import java.util.Objects;
-import javax.enterprise.context.ApplicationScoped;
 import org.wildfly.security.credential.PasswordCredential;
 import org.wildfly.security.evidence.PasswordGuessEvidence;
 import org.wildfly.security.password.Password;
@@ -14,6 +9,12 @@ import org.wildfly.security.password.interfaces.BCryptPassword;
 import org.wildfly.security.password.spec.EncryptablePasswordSpec;
 import org.wildfly.security.password.spec.IteratedSaltedPasswordAlgorithmSpec;
 import org.wildfly.security.password.util.ModularCrypt;
+
+import javax.enterprise.context.ApplicationScoped;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
+import java.util.Objects;
 
 @ApplicationScoped
 public class BCryptPasswordHasher {

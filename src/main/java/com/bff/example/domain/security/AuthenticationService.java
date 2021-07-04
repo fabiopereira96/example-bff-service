@@ -1,17 +1,18 @@
 package com.bff.example.domain.security;
 
-import com.bff.example.infrastructure.mongo.user.UserEntity;
 import com.bff.example.domain.security.exception.UserNotActivatedException;
 import com.bff.example.domain.security.exception.UsernameNotFoundException;
+import com.bff.example.infrastructure.mongo.user.UserEntity;
 import io.quarkus.security.AuthenticationFailedException;
 import io.quarkus.security.runtime.QuarkusPrincipal;
 import io.quarkus.security.runtime.QuarkusSecurityIdentity;
-import java.util.Locale;
-import java.util.stream.Collectors;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import java.util.Locale;
+import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class AuthenticationService {

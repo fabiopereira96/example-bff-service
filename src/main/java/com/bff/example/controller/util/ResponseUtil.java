@@ -1,9 +1,9 @@
 package com.bff.example.controller.util;
 
+import javax.ws.rs.core.Response;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
-import javax.ws.rs.core.Response;
 
 public interface ResponseUtil {
     static Response wrapOrNotFound(Optional maybeResponse) {

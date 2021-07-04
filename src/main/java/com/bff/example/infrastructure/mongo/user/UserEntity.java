@@ -5,20 +5,21 @@ import com.bff.example.infrastructure.mongo.authority.Authority;
 import io.quarkus.cache.CacheResult;
 import io.quarkus.mongodb.panache.MongoEntity;
 import io.quarkus.mongodb.panache.PanacheMongoEntityBase;
+import io.quarkus.panache.common.Page;
 import org.bson.codecs.pojo.annotations.BsonId;
 import org.bson.codecs.pojo.annotations.BsonIgnore;
-import java.io.Serializable;
-import java.time.Instant;
-import java.util.HashSet;
-import io.quarkus.panache.common.Page;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+
 import javax.json.bind.annotation.JsonbTransient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
+import java.time.Instant;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 @MongoEntity(collection="jhi_user")
 public class UserEntity extends PanacheMongoEntityBase implements Serializable {

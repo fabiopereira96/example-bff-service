@@ -2,15 +2,15 @@ package com.bff.example.domain.user.model;
 
 import com.bff.example.configuration.Constants;
 import com.bff.example.infrastructure.mongo.user.UserEntity;
-
 import io.quarkus.runtime.annotations.RegisterForReflection;
-import java.time.Instant;
-import java.util.Set;
-import java.util.stream.Collectors;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.time.Instant;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * A DTO representing a user, with his authorities.

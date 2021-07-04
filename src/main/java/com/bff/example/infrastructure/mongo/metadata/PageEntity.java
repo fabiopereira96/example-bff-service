@@ -2,10 +2,14 @@ package com.bff.example.infrastructure.mongo.metadata;
 
 import io.quarkus.mongodb.panache.MongoEntity;
 import io.quarkus.mongodb.panache.PanacheMongoEntityBase;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.Optional;
 import java.util.Set;
 
 @NoArgsConstructor
@@ -29,4 +33,8 @@ public class PageEntity extends PanacheMongoEntityBase implements Serializable {
     public String title;
     public String so;
     public String userId;
+
+    public static Optional<PageEntity> findByIdOptional(String id) {
+        return find("key", id).firstResultOptional();
+    }
 }

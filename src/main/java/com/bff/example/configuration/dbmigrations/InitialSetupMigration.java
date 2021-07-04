@@ -1,9 +1,8 @@
 package com.bff.example.configuration.dbmigrations;
 
-import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
-import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
-
 import com.bff.example.configuration.util.FileHelper;
+import com.bff.example.constants.AuthoritiesConstants;
+import com.bff.example.infrastructure.mongo.authority.Authority;
 import com.bff.example.infrastructure.mongo.metadata.PageEntity;
 import com.bff.example.infrastructure.mongo.metadata.SectionEntity;
 import com.bff.example.infrastructure.mongo.user.UserEntity;
@@ -11,14 +10,15 @@ import com.github.cloudyrock.mongock.ChangeLog;
 import com.github.cloudyrock.mongock.ChangeSet;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoDatabase;
-import com.bff.example.constants.AuthoritiesConstants;
-import com.bff.example.infrastructure.mongo.authority.Authority;
-import java.time.Instant;
-import java.util.Arrays;
-
 import org.bson.codecs.configuration.CodecProvider;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
+
+import java.time.Instant;
+import java.util.Arrays;
+
+import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
+import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 
 /**
  * Creates the initial database setup.

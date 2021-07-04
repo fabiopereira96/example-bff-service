@@ -9,6 +9,8 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,4 +31,8 @@ public class SectionEntity extends PanacheMongoEntityBase implements Serializabl
 
     public Boolean dinamic;
     public String metadata;
+
+    public static List<SectionEntity> findByListIds(Set<String> ids) {
+        return find("{'key':{$in: [?1]}}", ids).list();
+    }
 }

@@ -1,8 +1,8 @@
 package com.bff.example.controller.rest.vm;
 
+import com.bff.example.domain.user.model.User;
 import io.quarkus.runtime.annotations.RegisterForReflection;
 
-import com.bff.example.domain.user.model.User;
 import javax.validation.constraints.Size;
 
 /**

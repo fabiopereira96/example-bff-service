@@ -1,37 +1,36 @@
 package com.bff.example.domain.user;
 
 import com.bff.example.configuration.Constants;
+import com.bff.example.constants.AuthoritiesConstants;
+import com.bff.example.domain.mail.exception.EmailAlreadyUsedException;
+import com.bff.example.domain.security.BCryptPasswordHasher;
+import com.bff.example.domain.security.RandomUtil;
+import com.bff.example.domain.user.exception.InvalidPasswordException;
+import com.bff.example.domain.user.exception.UsernameAlreadyUsedException;
 import com.bff.example.domain.user.model.User;
 import com.bff.example.infrastructure.mongo.authority.Authority;
 import com.bff.example.infrastructure.mongo.user.UserEntity;
-import com.bff.example.constants.AuthoritiesConstants;
-import com.bff.example.domain.security.BCryptPasswordHasher;
-import com.bff.example.domain.security.RandomUtil;
-import com.bff.example.domain.mail.exception.EmailAlreadyUsedException;
-import com.bff.example.domain.user.exception.InvalidPasswordException;
-import com.bff.example.domain.user.exception.UsernameAlreadyUsedException;
 import io.quarkus.cache.CacheInvalidate;
 import io.quarkus.panache.common.Page;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.transaction.Transactional;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @ApplicationScoped
 @Transactional
 public class UserService {
     private final Logger log = LoggerFactory.getLogger(UserService.class);
 
-
     final BCryptPasswordHasher passwordHasher;
-
 
     @Inject
     public UserService(BCryptPasswordHasher passwordHasher) {
@@ -269,6 +268,7 @@ public class UserService {
     }
 
     public List<User> getAllManagedUsers() {
+
         return UserEntity.findAllByLoginNot(Page.ofSize(20), Constants.ANONYMOUS_USER).stream().map(User::new).collect(Collectors.toList());
     }
 

@@ -1,7 +1,8 @@
 package com.bff.example.domain.security;
 
-import java.security.SecureRandom;
 import org.apache.commons.lang3.RandomStringUtils;
+
+import java.security.SecureRandom;
 
 public class RandomUtil {
     private static final int DEF_COUNT = 20;

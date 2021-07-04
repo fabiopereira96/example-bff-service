@@ -1,18 +1,18 @@
 package com.bff.example.controller.rest;
 
+import com.bff.example.constants.AuthoritiesConstants;
 import com.bff.example.controller.rest.vm.ConfigPropsVM;
 import com.bff.example.controller.rest.vm.EnvVM;
-import com.bff.example.constants.AuthoritiesConstants;
 import io.quarkus.runtime.configuration.ProfileManager;
 import org.eclipse.microprofile.config.ConfigProvider;
 import org.eclipse.microprofile.config.spi.ConfigSource;
 
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.annotation.security.RolesAllowed;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;

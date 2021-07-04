@@ -4,11 +4,12 @@ import com.bff.example.configuration.JHipsterProperties;
 import com.bff.example.infrastructure.mongo.user.UserEntity;
 import io.quarkus.mailer.MailTemplate;
 import io.quarkus.qute.api.ResourcePath;
-import java.util.concurrent.CompletionStage;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import java.util.concurrent.CompletionStage;
 
 /**
  * Service for sending emails.
