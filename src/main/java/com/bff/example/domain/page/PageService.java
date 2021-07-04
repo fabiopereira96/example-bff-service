@@ -12,7 +12,7 @@ import java.util.List;
 
 import static com.bff.example.infrastructure.mongo.metadata.PageEntity.findByIdOptional;
 import static com.bff.example.infrastructure.mongo.metadata.SectionEntity.findByListIds;
-import static org.apache.commons.lang3.ObjectUtils.isEmpty;
+import static java.util.Optional.*;
 
 @ApplicationScoped
 @Transactional
@@ -30,12 +30,16 @@ public class PageService {
 
     private Page getPageSections(PageEntity pageEntity) {
         var page = mapper.entityToPage(pageEntity);
-        return isEmpty(pageEntity.sections) ? page : getConvertedSections(page, pageEntity);
+        return ofNullable(pageEntity.sections)
+            .map(existsSections -> getConvertedSections(page, pageEntity))
+            .orElse(page);
     }
 
     private Page getConvertedSections(Page page, PageEntity pageEntity) {
         var sectionEntities = findByListIds(pageEntity.getSections());
-        return isEmpty(sectionEntities) ? page : appendConvertedSectionsInPage(page, sectionEntities);
+        return ofNullable(sectionEntities)
+            .map(nonNullSections -> appendConvertedSectionsInPage(page, nonNullSections))
+            .orElse(page);
     }
 
     private Page appendConvertedSectionsInPage(Page page, List<SectionEntity> sectionEntities) {
