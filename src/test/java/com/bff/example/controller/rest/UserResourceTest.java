@@ -1,5 +1,24 @@
 package com.bff.example.controller.rest;
 
+import com.bff.example.TestUtil;
+import com.bff.example.constants.AuthoritiesConstants;
+import com.bff.example.controller.rest.vm.ManagedUserVM;
+import com.bff.example.domain.user.mapper.UserMapper;
+import com.bff.example.domain.user.model.User;
+import com.bff.example.infrastructure.mongo.authority.Authority;
+import com.bff.example.infrastructure.mongo.user.UserEntity;
+import io.quarkus.test.junit.QuarkusTest;
+import io.restassured.RestAssured;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import javax.transaction.Transactional;
+import javax.ws.rs.core.HttpHeaders;
+import java.time.Instant;
+import java.util.Set;
+
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static io.restassured.config.ObjectMapperConfig.objectMapperConfig;
@@ -8,23 +27,6 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.Response.Status.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.*;
-
-import com.bff.example.TestUtil;
-import com.bff.example.infrastructure.mongo.authority.Authority;
-import com.bff.example.infrastructure.mongo.user.UserEntity;
-import com.bff.example.constants.AuthoritiesConstants;
-import com.bff.example.domain.user.model.User;
-import com.bff.example.domain.user.mapper.UserMapper;
-import com.bff.example.controller.rest.vm.ManagedUserVM;
-import io.quarkus.test.junit.QuarkusTest;
-import io.restassured.RestAssured;
-import java.time.Instant;
-import java.util.Set;
-import javax.transaction.Transactional;
-import javax.ws.rs.core.HttpHeaders;
-
-import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.jupiter.api.*;
 
 @QuarkusTest
 public class UserResourceTest {

@@ -2,9 +2,18 @@
   "type": "PAGE",
   "key": "HOME_PAGE_DELIVERY",
   "sections": [
-    "HOME_PAGE_HEAD",
-    "PRODUCT_CATEGORIES",
-    "PRODUCT_POPULARS"
+    {
+      "key": "HOME_PAGE_HEAD",
+      "order": 3
+    },
+    {
+      "key": "PRODUCT_CATEGORIES",
+      "order": 1
+    },
+    {
+      "key": "PRODUCT_POPULARS",
+      "order": 2
+    }
   ],
   "status": "ACTIVE",
   "title": "Food Delivery",

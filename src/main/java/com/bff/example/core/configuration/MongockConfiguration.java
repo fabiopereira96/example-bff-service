@@ -1,4 +1,4 @@
-package com.bff.example.configuration;
+package com.bff.example.core.configuration;
 
 import com.github.cloudyrock.mongock.driver.mongodb.sync.v4.driver.MongoSync4Driver;
 import com.github.cloudyrock.standalone.MongockStandalone;
@@ -22,7 +22,7 @@ public class MongockConfiguration {
     MongockStandalone
       .builder()
       .setDriver(MongoSync4Driver.withDefaultLock(mongoClient, databaseName))
-      .addChangeLogsScanPackage("com.bff.example.configuration.dbmigrations")
+      .addChangeLogsScanPackage("com.bff.example.core.configuration.dbmigrations")
       .buildRunner()
       .execute();
   }

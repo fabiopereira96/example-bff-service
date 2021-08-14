@@ -6,4 +6,5 @@ public class Section {
     public String status;
     public Boolean dinamic;
     public String metadata;
+    public int order;
 }

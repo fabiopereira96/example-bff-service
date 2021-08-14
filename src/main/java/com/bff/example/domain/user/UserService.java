@@ -1,7 +1,7 @@
 package com.bff.example.domain.user;
 
-import com.bff.example.configuration.Constants;
 import com.bff.example.constants.AuthoritiesConstants;
+import com.bff.example.core.configuration.Constants;
 import com.bff.example.domain.mail.exception.EmailAlreadyUsedException;
 import com.bff.example.domain.security.BCryptPasswordHasher;
 import com.bff.example.domain.security.RandomUtil;

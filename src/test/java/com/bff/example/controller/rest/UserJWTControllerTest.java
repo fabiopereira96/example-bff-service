@@ -1,23 +1,23 @@
 package com.bff.example.controller.rest;
 
-import static io.restassured.RestAssured.given;
-import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
-import static javax.ws.rs.core.Response.Status.*;
-import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.fail;
-
 import com.bff.example.TestUtil;
 import com.bff.example.controller.rest.vm.LoginVM;
 import com.bff.example.controller.rest.vm.ManagedUserVM;
 import io.quarkus.mailer.Mail;
 import io.quarkus.mailer.MockMailbox;
 import io.quarkus.test.junit.QuarkusTest;
-import java.util.List;
-import java.util.regex.Pattern;
+import org.junit.jupiter.api.Test;
+
 import javax.inject.Inject;
 import javax.ws.rs.core.HttpHeaders;
+import java.util.List;
+import java.util.regex.Pattern;
 
-import org.junit.jupiter.api.*;
+import static io.restassured.RestAssured.given;
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
+import static javax.ws.rs.core.Response.Status.*;
+import static org.hamcrest.Matchers.*;
+import static org.junit.jupiter.api.Assertions.fail;
 
 @QuarkusTest
 public class UserJWTControllerTest {

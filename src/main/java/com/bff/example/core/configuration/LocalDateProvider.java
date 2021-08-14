@@ -1,4 +1,4 @@
-package com.bff.example.configuration;
+package com.bff.example.core.configuration;
 
 import javax.ws.rs.ext.ParamConverter;
 import javax.ws.rs.ext.ParamConverterProvider;

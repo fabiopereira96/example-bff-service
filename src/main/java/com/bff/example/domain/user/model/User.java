@@ -1,6 +1,6 @@
 package com.bff.example.domain.user.model;
 
-import com.bff.example.configuration.Constants;
+import com.bff.example.core.configuration.Constants;
 import com.bff.example.infrastructure.mongo.user.UserEntity;
 import io.quarkus.runtime.annotations.RegisterForReflection;
 

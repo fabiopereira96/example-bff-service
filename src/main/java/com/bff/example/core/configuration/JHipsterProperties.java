@@ -1,4 +1,4 @@
-package com.bff.example.configuration;
+package com.bff.example.core.configuration;
 
 import io.quarkus.arc.config.ConfigProperties;
 

@@ -2,6 +2,6 @@
   "type": "SECTION",
   "key": "PRODUCT_CATEGORIES",
   "dynamic": true,
-  "metadata": "{\"title\":\"<html><strong>Categories<\\/strong> <\\/html>\",\"categoriesProperties\":{\"name\":\"<html> {{name}} <\\/html>\",\"icon\":\"https://links.images/{{icon}}\",\"isSelected\":false,\"buttonWithUrl\":{\"title\":\"<html> Details<\\/html>\",\"url\":\"https://host/api/categories/{{id}}\"}}}",
+  "metadata": "{\"title\":\"<html><strong>Categories</strong></html>\",\"categoriesProperties\":{\"name\":\"<html>{{name}}</html>\",\"icon\":\"https://links.icons/{{icon}}\",\"isSelected\":false,\"buttonWithUrl\":{\"title\":\"<html>Details</html>\",\"url\":\"http://localhost:8080/api/categories/{{id}}\"}}}",
   "status": "ACTIVE"
 }

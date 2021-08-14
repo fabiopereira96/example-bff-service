@@ -1,6 +1,6 @@
 package com.bff.example.domain.security.jwt;
 
-import com.bff.example.configuration.JHipsterProperties;
+import com.bff.example.core.configuration.JHipsterProperties;
 import io.quarkus.security.runtime.QuarkusSecurityIdentity;
 import org.jose4j.jws.AlgorithmIdentifiers;
 import org.jose4j.jws.JsonWebSignature;

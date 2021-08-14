@@ -1,7 +1,7 @@
 package com.bff.example.controller.rest;
 
 import com.bff.example.TestUtil;
-import com.bff.example.configuration.mock.JHipsterInfoMock;
+import com.bff.example.core.configuration.mock.JHipsterInfoMock;
 import com.bff.example.domain.management.model.ManagementInfo;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.RestAssured;

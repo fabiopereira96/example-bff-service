@@ -1,7 +1,7 @@
-package com.bff.example.configuration.dbmigrations;
+package com.bff.example.core.configuration.dbmigrations;
 
-import com.bff.example.configuration.util.FileHelper;
 import com.bff.example.constants.AuthoritiesConstants;
+import com.bff.example.core.util.FileHelper;
 import com.bff.example.infrastructure.mongo.authority.Authority;
 import com.bff.example.infrastructure.mongo.metadata.PageEntity;
 import com.bff.example.infrastructure.mongo.metadata.SectionEntity;

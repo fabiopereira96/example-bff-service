@@ -1,6 +1,6 @@
 package com.bff.example.domain.mail;
 
-import com.bff.example.configuration.JHipsterProperties;
+import com.bff.example.core.configuration.JHipsterProperties;
 import com.bff.example.infrastructure.mongo.user.UserEntity;
 import io.quarkus.mailer.MailTemplate;
 import io.quarkus.qute.api.ResourcePath;

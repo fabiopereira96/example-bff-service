@@ -1,6 +1,6 @@
 package com.bff.example.infrastructure.mongo.user;
 
-import com.bff.example.configuration.Constants;
+import com.bff.example.core.configuration.Constants;
 import com.bff.example.infrastructure.mongo.authority.Authority;
 import io.quarkus.cache.CacheResult;
 import io.quarkus.mongodb.panache.MongoEntity;

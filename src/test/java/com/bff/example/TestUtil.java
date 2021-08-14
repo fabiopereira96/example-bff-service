@@ -1,15 +1,10 @@
 package com.bff.example;
 
-import static com.bff.example.configuration.Constants.DATE_TIME_FORMAT;
-import static io.restassured.RestAssured.given;
-import static javax.ws.rs.core.Response.Status.OK;
-import static org.hamcrest.Matchers.*;
-import static org.assertj.core.api.Assertions.assertThat;
-
 import com.bff.example.controller.rest.vm.LoginVM;
 import io.restassured.mapper.ObjectMapper;
 import io.restassured.mapper.ObjectMapperDeserializationContext;
 import io.restassured.mapper.ObjectMapperSerializationContext;
+
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
 import javax.json.bind.JsonbConfig;
@@ -18,6 +13,12 @@ import javax.ws.rs.core.MediaType;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.Temporal;
+
+import static com.bff.example.core.configuration.Constants.DATE_TIME_FORMAT;
+import static io.restassured.RestAssured.given;
+import static javax.ws.rs.core.Response.Status.OK;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.*;
 
 /**
  * Utility class for testing REST controllers.

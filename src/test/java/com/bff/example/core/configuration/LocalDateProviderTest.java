@@ -1,4 +1,4 @@
-package com.bff.example.configuration;
+package com.bff.example.core.configuration;
 import org.junit.jupiter.api.Test;
 
 import javax.ws.rs.ext.ParamConverter;

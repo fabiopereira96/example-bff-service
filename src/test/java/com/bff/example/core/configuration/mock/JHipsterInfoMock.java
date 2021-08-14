@@ -1,6 +1,6 @@
-package com.bff.example.configuration.mock;
+package com.bff.example.core.configuration.mock;
 
-import com.bff.example.configuration.JHipsterInfo;
+import com.bff.example.core.configuration.JHipsterInfo;
 import io.quarkus.test.Mock;
 
 import javax.enterprise.context.ApplicationScoped;

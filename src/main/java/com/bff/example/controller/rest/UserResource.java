@@ -57,12 +57,8 @@ import static javax.ws.rs.core.UriBuilder.fromPath;
 public class UserResource {
     private final Logger log = LoggerFactory.getLogger(UserResource.class);
 
-    private static final String ENTITY_NAME = "users";
-
     final String applicationName;
-
     final MailService mailService;
-
     final UserService userService;
 
     @Inject
@@ -158,7 +154,6 @@ public class UserResource {
     @GET
     public Response getAllUsers(@QueryParam("sort") String pagination) {
         final List<User> page = userService.getAllManagedUsers();
-        //        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         Response.ResponseBuilder response = Response.ok(page);
         return response.build();
     }

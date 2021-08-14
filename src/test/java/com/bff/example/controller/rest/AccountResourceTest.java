@@ -1,5 +1,33 @@
 package com.bff.example.controller.rest;
 
+import com.bff.example.TestUtil;
+import com.bff.example.constants.AuthoritiesConstants;
+import com.bff.example.controller.rest.vm.KeyAndPasswordVM;
+import com.bff.example.controller.rest.vm.LoginVM;
+import com.bff.example.controller.rest.vm.ManagedUserVM;
+import com.bff.example.core.configuration.Constants;
+import com.bff.example.domain.security.RandomUtil;
+import com.bff.example.domain.user.model.PasswordChange;
+import com.bff.example.domain.user.model.User;
+import com.bff.example.infrastructure.mongo.user.UserEntity;
+import io.quarkus.mailer.Mail;
+import io.quarkus.mailer.MockMailbox;
+import io.quarkus.test.junit.QuarkusTest;
+import io.restassured.RestAssured;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import javax.inject.Inject;
+import javax.ws.rs.core.HttpHeaders;
+import javax.ws.rs.core.MediaType;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.regex.Pattern;
+
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static io.restassured.config.ObjectMapperConfig.objectMapperConfig;
@@ -9,32 +37,6 @@ import static javax.ws.rs.core.Response.Status.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.fail;
-
-import com.bff.example.TestUtil;
-import com.bff.example.configuration.Constants;
-import com.bff.example.infrastructure.mongo.user.UserEntity;
-import com.bff.example.constants.AuthoritiesConstants;
-import com.bff.example.domain.security.RandomUtil;
-import com.bff.example.domain.user.model.PasswordChange;
-import com.bff.example.domain.user.model.User;
-import com.bff.example.controller.rest.vm.KeyAndPasswordVM;
-import com.bff.example.controller.rest.vm.LoginVM;
-import com.bff.example.controller.rest.vm.ManagedUserVM;
-import io.quarkus.mailer.Mail;
-import io.quarkus.mailer.MockMailbox;
-import io.quarkus.test.junit.QuarkusTest;
-import io.restassured.RestAssured;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.regex.Pattern;
-import javax.inject.Inject;
-import javax.ws.rs.core.HttpHeaders;
-import javax.ws.rs.core.MediaType;
-
-import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.jupiter.api.*;
 
 @QuarkusTest
 public class AccountResourceTest {

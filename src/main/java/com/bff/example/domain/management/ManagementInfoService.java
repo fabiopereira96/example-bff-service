@@ -1,6 +1,6 @@
 package com.bff.example.domain.management;
 
-import com.bff.example.configuration.JHipsterInfo;
+import com.bff.example.core.configuration.JHipsterInfo;
 import com.bff.example.domain.management.model.ManagementInfo;
 import io.quarkus.runtime.configuration.ProfileManager;
 

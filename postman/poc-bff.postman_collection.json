@@ -1,0 +1,374 @@
+{
+	"info": {
+		"_postman_id": "4c383e06-53d8-4a7d-a869-31eea59d6ad3",
+		"name": "poc-bff",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "USERS",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_OAUTH}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_OAUTH}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"login\": \"testeEmailReal\",\n        \"firstName\": \"Teste\",\n        \"lastName\": \"Postman\",\n        \"email\": \"fabio.norbt@gmail.com\",\n        \"imageUrl\": null,\n        \"activated\": true,\n        \"langKey\": \"pt-br\",\n        \"authorities\": [\n            \"ROLE_USER\",\n            \"ROLE_ADMIN\"\n        ],\n        \"address\": {\n            \"street\": \"Rua Jesus\",\n            \"city\": \"Belo Horizonte\",\n            \"state\": \"MG\",\n            \"country\": \"Brazil\",\n            \"complement\": \"Apto 102\",\n            \"number\": \"333C\",\n            \"zipCode\": \"31270200\"\n        }\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_OAUTH}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"id\": \"60ce5dbf8b259b4d9fa604f1\",\n        \"login\": \"testeEmailReal\",\n        \"firstName\": \"Teste\",\n        \"lastName\": \"Postman\",\n        \"email\": \"fabio.norbt@gmail.com\",\n        \"imageUrl\": null,\n        \"activated\": true,\n        \"langKey\": \"pt-br\",\n        \"authorities\": [\n            \"ROLE_USER\",\n            \"ROLE_ADMIN\"\n        ],\n        \"address\": {\n            \"street\": \"Alameda dos Ingleses\",\n            \"city\": \"Belo Horizonte\",\n            \"state\": \"MG\",\n            \"country\": \"Brazil\",\n            \"complement\": \"Apto 102\",\n            \"number\": \"333C\",\n            \"zipCode\": \"31270200\"\n        }\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_OAUTH}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users/:login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								":login"
+							],
+							"variable": [
+								{
+									"key": "login",
+									"value": "testeemailreal"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "HOME",
+			"item": [
+				{
+					"name": "Homepage",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/homepage",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"homepage"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BFF-ADMIN-PAGE",
+			"item": [
+				{
+					"name": "Get All Pages",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_OAUTH}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/admin/pages",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admin",
+								"pages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Page",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_OAUTH}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/admin/pages/HOME_PAGE_DELIVERY",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admin",
+								"pages",
+								"HOME_PAGE_DELIVERY"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update page",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_OAUTH}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"61180e4405518c05f3dd6705\",\n    \"type\": \"PAGE\",\n    \"title\": \"Food Delivery\",\n    \"so\": \"ANDROID\",\n    \"key\": \"HOME_PAGE_DELIVERY\",\n    \"sections\": [\n        {\n            \"key\": \"HOME_PAGE_HEAD\",\n            \"order\": 1\n        },\n        {\n            \"key\": \"PRODUCT_CATEGORIES\",\n            \"order\": 2\n        },\n        {\n            \"key\": \"PRODUCT_POPULARS\",\n            \"order\": 3\n        }\n    ],\n    \"status\": \"ACTIVE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/admin/pages",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admin",
+								"pages"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authenticate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = JSON.parse(responseBody)",
+							"pm.globals.set(\"TOKEN_OAUTH\", jsonData.id_token);",
+							"pm.environment.set(\"TOKEN_OAUTH\", jsonData.id_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get API Docs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v2/api-docs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v2",
+						"api-docs"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

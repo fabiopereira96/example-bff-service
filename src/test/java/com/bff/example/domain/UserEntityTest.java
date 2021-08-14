@@ -1,10 +1,10 @@
 package com.bff.example.domain;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import com.bff.example.TestUtil;
 import com.bff.example.infrastructure.mongo.user.UserEntity;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class UserEntityTest {
 

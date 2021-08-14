@@ -9,10 +9,11 @@ import lombok.RequiredArgsConstructor;
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.function.Consumer;
 
-import static com.bff.example.infrastructure.mongo.metadata.PageEntity.findByIdOptional;
-import static com.bff.example.infrastructure.mongo.metadata.SectionEntity.findByListIds;
-import static java.util.Optional.*;
+import static com.bff.example.infrastructure.mongo.metadata.PageEntity.*;
+import static com.bff.example.infrastructure.mongo.metadata.SectionEntity.findByListKeys;
+import static java.util.Optional.ofNullable;
 
 @ApplicationScoped
 @Transactional
@@ -22,7 +23,7 @@ public class PageService {
     private final PageMapper mapper;
 
     public Page getById(String id) throws Exception {
-        var optionalPageEntity = findByIdOptional(id);
+        var optionalPageEntity = PageEntity.findByKeyOptional(id);
         return optionalPageEntity
             .map(this::getPageSections)
             .orElseThrow(Exception::new);
@@ -31,20 +32,26 @@ public class PageService {
     private Page getPageSections(PageEntity pageEntity) {
         var page = mapper.entityToPage(pageEntity);
         return ofNullable(pageEntity.sections)
-            .map(existsSections -> getConvertedSections(page, pageEntity))
+            .map(sectionsByPage -> getConvertedSections(pageEntity, page, sectionsByPage))
             .orElse(page);
     }
 
-    private Page getConvertedSections(Page page, PageEntity pageEntity) {
-        var sectionEntities = findByListIds(pageEntity.getSections());
+    private Page getConvertedSections(PageEntity pageEntity, Page page, List<SectionKey> sectionsByPage) {
+        var sectionEntities = findByListKeys(sectionsByPage);
         return ofNullable(sectionEntities)
-            .map(nonNullSections -> appendConvertedSectionsInPage(page, nonNullSections))
+            .map(existsSections -> appendAndOrderConvertedSectionsInPage(pageEntity, page, existsSections))
             .orElse(page);
     }
 
-    private Page appendConvertedSectionsInPage(Page page, List<SectionEntity> sectionEntities) {
-        sectionEntities.forEach(sectionEntity -> page.sections.add(mapper.entityToSection(sectionEntity)));
+    private Page appendAndOrderConvertedSectionsInPage(PageEntity pageEntity, Page page, List<SectionEntity> sectionEntities) {
+        sectionEntities.forEach(appendSectionWithOrder(pageEntity, page));
         return page;
+    }
+
+    private Consumer<SectionEntity> appendSectionWithOrder(PageEntity pageEntity, Page page) {
+        return sectionEntity -> page.sections.add(
+            mapper.entityToSection(sectionEntity,
+                pageEntity.getSectionOrderByKey(sectionEntity.getKey())));
     }
 
 }

@@ -1,4 +1,4 @@
-package com.bff.example.configuration.util;
+package com.bff.example.core.util;
 
 import com.bff.example.infrastructure.mongo.metadata.PageEntity;
 import com.bff.example.infrastructure.mongo.metadata.SectionEntity;
@@ -6,14 +6,19 @@ import com.bff.example.infrastructure.mongo.metadata.SectionEntity;
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
 import javax.json.bind.JsonbConfig;
+import javax.json.bind.config.PropertyOrderStrategy;
 import java.io.InputStream;
 
 public class FileHelper {
 
+    private final JsonbConfig config;
     private final Jsonb jsonb;
 
     public FileHelper() {
-        this.jsonb = JsonbBuilder.create(new JsonbConfig());
+        this.config = new JsonbConfig()
+            .withPropertyOrderStrategy(PropertyOrderStrategy.ANY)
+            .withNullValues(false);
+        this.jsonb = JsonbBuilder.create(config);
     }
 
     public SectionEntity readSectionByResource(String resource){
@@ -22,8 +27,8 @@ public class FileHelper {
     }
 
     public PageEntity readPageByResource(String resource){
-        InputStream sectionStream = getResourceAsStream(resource);
-        return jsonb.fromJson(sectionStream, PageEntity.class);
+        InputStream pageStream = getResourceAsStream(resource);
+        return jsonb.fromJson(pageStream, PageEntity.class);
     }
 
     private InputStream getResourceAsStream(String resource) {
