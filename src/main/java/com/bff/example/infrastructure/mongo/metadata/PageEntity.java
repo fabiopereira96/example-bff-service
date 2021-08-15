@@ -46,6 +46,10 @@ public class PageEntity extends PanacheMongoEntityBase implements Serializable {
         return find("key", key).firstResultOptional();
     }
 
+    public static Optional<PageEntity> findByKeyAndUserIdOptional(String key, String userId) {
+        return find("{ $and: [ {key: ?1}, {userId: ?2} ] }", key, userId).firstResultOptional();
+    }
+
     public static PageEntity findByKey(String key) {
         return find("key", key).firstResult();
     }

@@ -20,13 +20,13 @@ public class HomeService {
     private final CategorySectionService categoriesService;
     private final PopularSectionService popularService;
 
-    public HomePage getHomePage(String id) {
-        return doGetHomePage(id);
+    public HomePage getHomePage(String key, String userId) {
+        return doGetHomePage(key, userId);
     }
 
-    private HomePage doGetHomePage(String id) {
+    private HomePage doGetHomePage(String key, String userId) {
         try {
-            var page = pageService.getById(id);
+            var page = pageService.getByKeyAndUser(key, userId);
             return HomePage.builder()
                 .id(page.key)
                 .status(page.status)

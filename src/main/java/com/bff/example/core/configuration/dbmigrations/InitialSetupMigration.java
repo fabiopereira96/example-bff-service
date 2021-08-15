@@ -86,7 +86,7 @@ public class InitialSetupMigration {
       .insertMany(Arrays.asList(adminUserEntity, anonymousUserEntity, userUserEntity));
   }
 
-  @ChangeSet(order = "03", author = "initiator", id = "03-addPagesAndSections")
+  @ChangeSet(order = "10", author = "initiator", id = "10-addPagesAndSections")
   public void addPagesAndSections(MongoDatabase db){
       var fileHelper = new FileHelper();
 
@@ -98,11 +98,17 @@ public class InitialSetupMigration {
           .readSectionByResource("templates-bff/product-populars-section.json");
       var homePage = fileHelper
           .readPageByResource("templates-bff/home-page.json");
+      var homePagePerUser = fileHelper
+          .readPageByResource("templates-bff/home-page-user.json");
 
       db.createCollection("bff_page");
       db.getCollection("bff_page", PageEntity.class)
           .withCodecRegistry(getCodecRegistry())
           .insertOne(homePage);
+
+      db.getCollection("bff_page", PageEntity.class)
+          .withCodecRegistry(getCodecRegistry())
+          .insertOne(homePagePerUser);
 
       db.createCollection("bff_section");
       db.getCollection("bff_section", SectionEntity.class)

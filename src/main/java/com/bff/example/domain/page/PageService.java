@@ -22,8 +22,16 @@ public class PageService {
 
     private final PageMapper mapper;
 
-    public Page getById(String id) throws Exception {
-        var optionalPageEntity = PageEntity.findByKeyOptional(id);
+    public Page getByKeyAndUser(String key, String userId) throws Exception {
+        var optionalPageEntity = PageEntity.findByKeyAndUserIdOptional(key, userId);
+        if(optionalPageEntity.isPresent()) {
+            return getPageSections(optionalPageEntity.get());
+        }
+        return getByKey(key);
+    }
+
+    public Page getByKey(String key) throws Exception {
+        var optionalPageEntity = PageEntity.findByKeyOptional(key);
         return optionalPageEntity
             .map(this::getPageSections)
             .orElseThrow(Exception::new);

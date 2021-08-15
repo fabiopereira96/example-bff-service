@@ -9,13 +9,10 @@
     {
       "key": "PRODUCT_CATEGORIES",
       "order": 2
-    },
-    {
-      "key": "PRODUCT_POPULARS",
-      "order": 3
     }
   ],
   "status": "ACTIVE",
   "title": "Food Delivery",
-  "so": "ANDROID"
+  "so": "ANDROID",
+  "userId": "user-2"
 }
