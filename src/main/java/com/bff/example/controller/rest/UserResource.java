@@ -6,7 +6,6 @@ import com.bff.example.controller.rest.exception.EmailAlreadyUsedException;
 import com.bff.example.controller.rest.exception.LoginAlreadyUsedException;
 import com.bff.example.controller.util.HeaderUtil;
 import com.bff.example.controller.util.ResponseUtil;
-import com.bff.example.domain.mail.MailService;
 import com.bff.example.domain.user.UserService;
 import com.bff.example.domain.user.model.User;
 import com.bff.example.infrastructure.mongo.user.UserEntity;
@@ -58,17 +57,14 @@ public class UserResource {
     private final Logger log = LoggerFactory.getLogger(UserResource.class);
 
     final String applicationName;
-    final MailService mailService;
     final UserService userService;
 
     @Inject
     public UserResource(
         @ConfigProperty(name = "application.name") String applicationName,
-        MailService mailService,
         UserService userService
     ) {
         this.applicationName = applicationName;
-        this.mailService = mailService;
         this.userService = userService;
     }
 
@@ -97,7 +93,6 @@ public class UserResource {
             throw new EmailAlreadyUsedException();
         } else {
             var newUser = userService.createUser(user);
-            mailService.sendCreationEmail(newUser);
             Response.ResponseBuilder response = Response.created(fromPath("/api/users").path(newUser.login).build()).entity(newUser);
             HeaderUtil.createAlert(applicationName, "userManagement.created", newUser.login).forEach(response::header);
             return response.build();

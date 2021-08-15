@@ -5,9 +5,6 @@ import io.quarkus.runtime.annotations.RegisterForReflection;
 
 import javax.validation.constraints.Size;
 
-/**
- * View Model extending the User, which is meant to be used in the user management UI.
- */
 @RegisterForReflection
 public class ManagedUserVM extends User {
     public static final int PASSWORD_MIN_LENGTH = 4;

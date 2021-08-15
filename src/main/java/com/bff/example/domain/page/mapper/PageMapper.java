@@ -6,7 +6,6 @@ import com.bff.example.infrastructure.mongo.metadata.PageEntity;
 import com.bff.example.infrastructure.mongo.metadata.PageEntity.SectionKey;
 import com.bff.example.infrastructure.mongo.metadata.SectionEntity;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 import java.util.ArrayList;
 import java.util.List;

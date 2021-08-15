@@ -11,7 +11,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.function.Consumer;
 
-import static com.bff.example.infrastructure.mongo.metadata.PageEntity.*;
+import static com.bff.example.infrastructure.mongo.metadata.PageEntity.SectionKey;
 import static com.bff.example.infrastructure.mongo.metadata.SectionEntity.findByListKeys;
 import static java.util.Optional.ofNullable;
 

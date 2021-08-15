@@ -2,9 +2,6 @@ package com.bff.example.controller.rest.vm;
 
 import io.quarkus.runtime.annotations.RegisterForReflection;
 
-/**
- * View Model object for storing the user's key and password.
- */
 @RegisterForReflection
 public class KeyAndPasswordVM {
     public String key;

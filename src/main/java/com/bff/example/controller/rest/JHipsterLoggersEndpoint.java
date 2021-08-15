@@ -45,15 +45,13 @@ public class JHipsterLoggersEndpoint {
   @Path("/{name}")
   @RolesAllowed(AuthoritiesConstants.ADMIN)
   public Response updateLoggerLevel(@PathParam("name") String name, LoggerVM loggerVM) {
-    Logger logger = Logger.getLogger(name);
-
+    var logger = Logger.getLogger(name);
     if (logger == null) {
       return Response.status(Response.Status.NOT_FOUND).build();
     }
 
-    Level level = Level.parse(loggerVM.configuredLevel);
+    var level = Level.parse(loggerVM.configuredLevel);
     logger.setLevel(level);
-
     return Response.ok().build();
   }
 

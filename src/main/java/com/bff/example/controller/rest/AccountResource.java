@@ -1,11 +1,8 @@
 package com.bff.example.controller.rest;
 
 import com.bff.example.controller.rest.exception.EmailAlreadyUsedException;
-import com.bff.example.controller.rest.exception.EmailNotFoundException;
 import com.bff.example.controller.rest.exception.LoginAlreadyUsedException;
-import com.bff.example.controller.rest.vm.KeyAndPasswordVM;
 import com.bff.example.controller.rest.vm.ManagedUserVM;
-import com.bff.example.domain.mail.MailService;
 import com.bff.example.domain.user.UserService;
 import com.bff.example.domain.user.exception.InvalidPasswordException;
 import com.bff.example.domain.user.exception.UsernameAlreadyUsedException;
@@ -27,11 +24,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import java.security.Principal;
 import java.util.Optional;
-import java.util.concurrent.CompletionStage;
 
-/**
- * REST controller for managing the current user's account.
- */
 @Path("/api")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -41,18 +34,15 @@ public class AccountResource {
 
     private static class AccountResourceException extends RuntimeException {
 
-        private AccountResourceException(String message) {
+        AccountResourceException(String message) {
             super(message);
         }
     }
 
-    final MailService mailService;
-
     final UserService userService;
 
     @Inject
-    public AccountResource(MailService mailService, UserService userService) {
-        this.mailService = mailService;
+    public AccountResource(UserService userService) {
         this.userService = userService;
     }
 
@@ -90,7 +80,7 @@ public class AccountResource {
             throw new EmailAlreadyUsedException();
         }
         var user = UserEntity.findOneByLogin(userLogin);
-        if (!user.isPresent()) {
+        if (user.isEmpty()) {
             throw new AccountResourceException("UserEntity could not be found");
         }
         userService.updateUser(userLogin, userDTO.firstName, userDTO.lastName, userDTO.email, userDTO.langKey, userDTO.imageUrl);
@@ -104,20 +94,21 @@ public class AccountResource {
      * @throws InvalidPasswordException  {@code 400 (Bad Request)} if the password is incorrect.
      * @throws EmailAlreadyUsedException {@code 400 (Bad Request)} if the email is already used.
      * @throws LoginAlreadyUsedException {@code 400 (Bad Request)} if the login is already used.
+     * @return
      */
     @POST
     @Path("/register")
     @PermitAll
-    public CompletionStage<Response> registerAccount(@Valid ManagedUserVM managedUserVM) {
-        if (!checkPasswordLength(managedUserVM.password)) {
+    public Response registerAccount(@Valid ManagedUserVM managedUserVM) {
+        if (checkPasswordLength(managedUserVM.password)) {
             throw new InvalidPasswordException();
         }
         try {
-            var user = userService.registerUser(managedUserVM, managedUserVM.password);
-            return mailService.sendActivationEmail(user).thenApply(it -> Response.created(null).build());
-        } catch (UsernameAlreadyUsedException e) {
+            userService.registerUser(managedUserVM, managedUserVM.password);
+            return Response.created(null).build();
+        } catch (UsernameAlreadyUsedException exception) {
             throw new LoginAlreadyUsedException();
-        } catch (com.bff.example.domain.mail.exception.EmailAlreadyUsedException e) {
+        } catch (EmailAlreadyUsedException exception) {
             throw new EmailAlreadyUsedException();
         }
     }
@@ -133,7 +124,7 @@ public class AccountResource {
     @PermitAll
     public void activateAccount(@QueryParam(value = "key") String key) {
         var user = userService.activateRegistration(key);
-        if (!user.isPresent()) {
+        if (user.isEmpty()) {
             throw new AccountResourceException("No user was found for this activation key");
         }
     }
@@ -165,53 +156,16 @@ public class AccountResource {
         var userLogin = Optional
             .ofNullable(ctx.getUserPrincipal().getName())
             .orElseThrow(() -> new AccountResourceException("Current user login not found"));
-        if (!checkPasswordLength(passwordChange.newPassword)) {
+        if (checkPasswordLength(passwordChange.newPassword)) {
             throw new InvalidPasswordException();
         }
         userService.changePassword(userLogin, passwordChange.currentPassword, passwordChange.newPassword);
         return Response.ok().build();
     }
 
-    /**
-     * {@code POST /account/reset-password/init} : Send an email to reset the password of the user.
-     *
-     * @param mail the mail of the user.
-     * @throws EmailNotFoundException {@code 400 (Bad Request)} if the email address is not registered.
-     */
-    @POST
-    @Path("/account/reset-password/init")
-    @Consumes(MediaType.TEXT_PLAIN)
-    public Response requestPasswordReset(String mail) {
-        mailService.sendPasswordResetMail(userService.requestPasswordReset(mail).orElseThrow(EmailNotFoundException::new));
-        return Response.ok().build();
-    }
-
-    /**
-     * {@code POST /account/reset-password/finish} : Finish to reset the password of the user.
-     *
-     * @param keyAndPassword the generated key and the new password.
-     * @throws InvalidPasswordException {@code 400 (Bad Request)} if the password is incorrect.
-     * @throws RuntimeException         {@code 500 (Internal Server Error)} if the password could not be reset.
-     */
-    @POST
-    @Path("/account/reset-password/finish")
-    public Response finishPasswordReset(KeyAndPasswordVM keyAndPassword) {
-        if (!checkPasswordLength(keyAndPassword.newPassword)) {
-            throw new InvalidPasswordException();
-        }
-        var user = userService.completePasswordReset(keyAndPassword.newPassword, keyAndPassword.key);
-
-        if (!user.isPresent()) {
-            throw new AccountResourceException("No user was found for this reset key");
-        }
-        return Response.ok().build();
-    }
-
     private static boolean checkPasswordLength(String password) {
-        return (
-            !password.isEmpty() &&
-            password.length() >= ManagedUserVM.PASSWORD_MIN_LENGTH &&
-            password.length() <= ManagedUserVM.PASSWORD_MAX_LENGTH
-        );
+        return (password.isEmpty() ||
+            password.length() < ManagedUserVM.PASSWORD_MIN_LENGTH ||
+            password.length() > ManagedUserVM.PASSWORD_MAX_LENGTH);
     }
 }

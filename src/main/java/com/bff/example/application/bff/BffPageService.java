@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
-
 import java.util.List;
 
 import static com.bff.example.infrastructure.mongo.metadata.PageEntity.*;

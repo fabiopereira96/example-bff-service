@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
 
+import static javax.ws.rs.core.Response.Status.NOT_FOUND;
+
 public interface ResponseUtil {
     static Response wrapOrNotFound(Optional maybeResponse) {
         return wrapOrNotFound(maybeResponse, Collections.emptyMap());
@@ -12,8 +14,8 @@ public interface ResponseUtil {
 
     static Response wrapOrNotFound(Optional maybeResponse, Map<String, String> header) {
         Response.ResponseBuilder response = (Response.ResponseBuilder) maybeResponse
-            .map(value -> Response.ok(value))
-            .orElse(Response.status(Response.Status.NOT_FOUND));
+            .map(Response::ok)
+            .orElse(Response.status(NOT_FOUND));
         header.forEach(response::header);
         return response.build();
     }
