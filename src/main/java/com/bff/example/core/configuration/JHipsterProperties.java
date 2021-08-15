@@ -5,7 +5,6 @@ import io.quarkus.arc.config.ConfigProperties;
 @ConfigProperties(prefix = "jhipster")
 public class JHipsterProperties {
     public Security security;
-    public Mail mail;
 
     public static class Security {
         public Authentication authentication;
@@ -24,9 +23,5 @@ public class JHipsterProperties {
                 }
             }
         }
-    }
-
-    public static class Mail {
-        public String baseUrl;
     }
 }

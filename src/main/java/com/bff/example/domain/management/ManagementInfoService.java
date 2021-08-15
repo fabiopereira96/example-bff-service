@@ -7,9 +7,6 @@ import io.quarkus.runtime.configuration.ProfileManager;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-/**
-* Provides information for management/info resource
-*/
 @ApplicationScoped
 public class ManagementInfoService {
 
