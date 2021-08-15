@@ -181,6 +181,16 @@
 				{
 					"name": "Homepage",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_OAUTH}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -283,7 +293,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": \"61180e4405518c05f3dd6705\",\n    \"type\": \"PAGE\",\n    \"title\": \"Food Delivery\",\n    \"so\": \"ANDROID\",\n    \"key\": \"HOME_PAGE_DELIVERY\",\n    \"sections\": [\n        {\n            \"key\": \"HOME_PAGE_HEAD\",\n            \"order\": 1\n        },\n        {\n            \"key\": \"PRODUCT_CATEGORIES\",\n            \"order\": 2\n        },\n        {\n            \"key\": \"PRODUCT_POPULARS\",\n            \"order\": 3\n        }\n    ],\n    \"status\": \"ACTIVE\"\n}",
+							"raw": "{\n    \"id\": \"61193759f323ef3928c61d66\",\n    \"type\": \"PAGE\",\n    \"title\": \"Food Delivery\",\n    \"so\": \"ANDROID\",\n    \"userId\": \"user-2\",\n    \"key\": \"HOME_PAGE_DELIVERY\",\n    \"sections\": [\n        {\n            \"key\": \"HOME_PAGE_HEAD\",\n            \"order\": 1\n        },\n        {\n            \"key\": \"PRODUCT_CATEGORIES\",\n            \"order\": 2\n        },\n        {\n            \"key\": \"PRODUCT_POPULARS\",\n            \"order\": 3\n        }\n    ],\n    \"status\": \"ACTIVE\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -309,46 +319,51 @@
 			]
 		},
 		{
-			"name": "Authenticate",
-			"event": [
+			"name": "LOGIN",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"let jsonData = JSON.parse(responseBody)",
-							"pm.globals.set(\"TOKEN_OAUTH\", jsonData.id_token);",
-							"pm.environment.set(\"TOKEN_OAUTH\", jsonData.id_token);"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"name": "Authenticate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = JSON.parse(responseBody)",
+									"pm.globals.set(\"TOKEN_OAUTH\", jsonData.id_token);",
+									"pm.environment.set(\"TOKEN_OAUTH\", jsonData.id_token);"
+								],
+								"type": "text/javascript"
+							}
 						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/api/authenticate",
-					"protocol": "http",
-					"host": [
-						"localhost"
 					],
-					"port": "8080",
-					"path": [
-						"api",
-						"authenticate"
-					]
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/authenticate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
 			"name": "Get API Docs",
