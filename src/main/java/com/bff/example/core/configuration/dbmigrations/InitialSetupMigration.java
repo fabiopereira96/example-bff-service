@@ -86,7 +86,7 @@ public class InitialSetupMigration {
       .insertMany(Arrays.asList(adminUserEntity, anonymousUserEntity, userUserEntity));
   }
 
-  @ChangeSet(order = "10", author = "initiator", id = "10-addPagesAndSections")
+  @ChangeSet(order = "03", author = "initiator", id = "03-addPagesAndSections")
   public void addPagesAndSections(MongoDatabase db){
       var fileHelper = new FileHelper();
 

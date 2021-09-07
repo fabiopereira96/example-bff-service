@@ -1,69 +1,42 @@
-# bff
+# POC Backend for Frontend 
 
-This application was generated using JHipster 6.10.5 and JHipster Quarkus 1.1.1, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v6.10.5](https://www.jhipster.tech/documentation-archive/v6.10.5).
+Prova de conceito utilizando o padrão Backend for Frontend, usando como exemplo uma Single Page Application (SPA) de um delivery. 
+
+
+## Libraries and Frameworks 
+
+- Quarkus 
+- JHipster
+- Postman
+- Mongodb 
+- Mustache 
+- Docker 
+- Maven
+- Sonar
 
 ## Development
 
-To start your application in the dev profile, run:
+Para iniciar a aplicação localmente, inicie o banco de dados com o mongodb e rode: 
 
     ./mvnw
 
-For further instructions on how to develop with JHipster, have a look at [Using JHipster in development][].
-
-## Building for production
-
-### Packaging as thin jar
-
-To build the final jar and optimize the bff application for production, run:
-
-```
-./mvnw -Pprod clean package
-```
-
-To ensure everything worked, run:
-
-    java -jar target/quarkus-app/*.jar
-
-Refer to [Using JHipster in production][] for more details.
-
-### Packaging as native executable
-
-_Targeting your Operation System_
-In order to build a native image locally, your need to have [GraalVM](https://www.graalvm.org/) installed and `GRAALVM_HOME` defined.
-You can use the `native` profile as follow to build native executable.
-
-```
-./mvnw package -Pnative
-```
-
-Keep in mind that the generated native executable is dependent on your Operating System.
-
-_Targeting a container environment_
-If you plan to run your application in a container, run:
-
-```
-./mvnw package -Dnative -Dquarkus.native.container-build=true
-```
-
-It will use a Docker container with GraalVM installed and produce an 64 bit Linux executable.
+Para mais informações sobre a execução de aplicações com o JHipster, acesse [Using JHipster in development][].
 
 ## Testing
 
-To launch your application's tests, run:
+Para executar os testes da aplicação, execute: 
 
     ./mvnw verify
 
-For more information, refer to the [Running tests page][].
+Para mais informações sobre os testes com o JHipster, acesse [Running tests page][].
 
-## Using Docker to simplify development (optional)
+## Docker
 
-You can use Docker to improve your JHipster development experience. A number of docker-compose configuration are available in the [src/main/docker](src/main/docker) folder to launch required third party services.
-
-For example, to start a mongodb database in a docker container, run:
+Para iniciar o mongodb via docker-compose, execute: 
 
     docker-compose -f src/main/docker/mongodb.yml up -d
 
-To stop it and remove the container, run:
+Para encerrar o mongodb via docker-compose, execute: 
 
     docker-compose -f src/main/docker/mongodb.yml down
 
