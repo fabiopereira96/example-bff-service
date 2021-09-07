@@ -14,6 +14,18 @@ Prova de conceito utilizando o padrão Backend for Frontend, usando como exemplo
 - Maven
 - Sonar
 
+## Architecture
+
+Arquitetura geral para o padrão aplicado 
+
+![Diagram](src/main/resources/imgs/arq-bff-geral.png)
+
+## Flow 
+
+Fluxo geral de consulta para construção de telas dinâmicas
+
+![Flow](src/main/resources/imgs/diagrama-sequencia-consulta.png)
+
 ## Development
 
 Para iniciar a aplicação localmente, inicie o banco de dados com o mongodb e rode: 
