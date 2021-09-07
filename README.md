@@ -1,4 +1,4 @@
-# POC Backend for Frontend 
+# Backend for Frontend - A Proof Of Concept (POC)
 
 Prova de conceito utilizando o padrão Backend for Frontend, usando como exemplo uma Single Page Application (SPA) de um delivery. 
 
